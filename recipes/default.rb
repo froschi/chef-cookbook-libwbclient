@@ -1,7 +1,13 @@
 packages = Array.new
 
 case node[:lsb][:codename]
-when "lucid", "precise"
+when "lucid"
+  include_recipe "libtalloc"
+
+  packages |= %w/
+    libwbclient0
+  /
+when "precise"
   packages |= %w/
     libwbclient0
   /
